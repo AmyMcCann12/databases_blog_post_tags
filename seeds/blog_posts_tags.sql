@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS "public"."posts";
+DROP TABLE IF EXISTS "public"."posts" CASCADE;
 -- This script only contains the table creation statements and does not fully represent the table in the database. It's still missing: indices, triggers. Do not use it as a backup.
 
 -- Table Definition
@@ -54,5 +54,5 @@ INSERT INTO "public"."posts_tags" ("post_id", "tag_id") VALUES
 (2, 4),
 (3, 4);
 
-ALTER TABLE "public"."posts_tags" ADD FOREIGN KEY ("tag_id") REFERENCES "public"."tags"("id");
-ALTER TABLE "public"."posts_tags" ADD FOREIGN KEY ("post_id") REFERENCES "public"."posts"("id");
+ALTER TABLE "public"."posts_tags" ADD FOREIGN KEY ("tag_id") REFERENCES "public"."tags"("id") ON DELETE CASCADE;
+ALTER TABLE "public"."posts_tags" ADD FOREIGN KEY ("post_id") REFERENCES "public"."posts"("id") ON DELETE CASCADE;
